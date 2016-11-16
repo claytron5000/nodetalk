@@ -2,19 +2,21 @@
 
 ---
 
-# Node, javascript package managers, and gulp
+# Node, js package managers, and gulp
   <p class="fragment">_Javascript has never tasted so good._</p>
 
 ---
 
 # Node.js ![node logo](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png)
 <section>
-this isn't your father's js *or maybe it is*
+<p>this isn't your father's js *or maybe it is*</p>
   
-* built on Google's v8 engine
-* interacts with the file system
-* asynchronus server
-* `require()`
+<ul>
+  <li class="fragment">built on Google's v8 javascript engine</li>
+  <li class="fragment">interacts with the file system</li>
+  <li class="fragment">runs an asynchronus server</li>
+  <li class="fragment">utilizers the `require()` function to add modularity</li>
+</ul>
 
 </section>
 
@@ -42,9 +44,14 @@ this isn't your father's js *or maybe it is*
 
 <section>
 
-  <p>The variable `PI` is private to the circle module, but we can call the area function like so:
+<p>The variable `PI` is private to the circle module, but we can call the area function like so:
   `circle.area(4);`</p>
 
+</section>
+
+<section>
+  
+  demo node read file.  
 </section>
 
 ---
@@ -56,80 +63,84 @@ this isn't your father's js *or maybe it is*
 
 # npm <svg viewBox="0 0 18 7"><path fill="#CB3837" d="M0,0v6h5v1h4v-1h9v-6"></path><path fill="#FFF" d="M1,1v4h2v-3h1v3h1v-4h1v5h2v-4h1v2h-1v1h2v-4h1v4h2v-3h1v3h1v-3h1v3h1v-4"></path></svg>
 
-  <section>
-    <p>manage those modules!</p>
-    <p class="fragment">`npm` is both a registry of node modules and a command-line tool that brings those packages into your project. In this way it is similar to `composer`. However, there are some differences.</p>
-  </section>
+<section>
+  <p>manage those modules!</p>
+  <p class="fragment">`npm` is both a registry of node modules and a command-line tool that brings those packages into your project. In this way it is similar to `composer`. However, there are some differences.</p>
+</section>
 
-  <section>
-    <p>The differences between `npm` and `composer`</p>
-      <ul>
-      <li class="fragment">`npm` creates the `node_modules` directory and the binaries are stored in a hidden `.bin` directory.</li>
-      <li class="fragment">`npm` reads and writes the `packages.json` file.</li>
-      <li class="fragment">`npm` registry is _not_ namespaced, which means once a name is taken on the npm registry, it's taken forever :-(</li>
-      <li class="fragment">`npm` does not create a `.lock` file, which means the versions are more free-floating</li>
-      <li class="fragment">`npm` is recursive when building the node_module directory. </li>
-      </ul>
-  </section>
+<section>
+  <p>The differences between `npm` and `composer`</p>
+    <ul>
+    <li class="fragment">`npm` creates the `node_modules` directory and the binaries are stored in a hidden `.bin` directory.</li>
+    <li class="fragment">`npm` reads and writes the `packages.json` file.</li>
+    <li class="fragment">`npm` registry is _not_ namespaced, which means once a name is taken on the npm registry, it's taken forever :-(</li>
+    <li class="fragment">`npm` does not create a `.lock` file, which means the versions are free-floating</li>
+    <li class="fragment">`npm` is recursive when building the node_module directory. </li>
+    </ul>
+</section>
 
-  <section>
-    <p>Recursion means that each package may have it's own `packages.json` and `node_modules` directory, which often leads to nested directories like this:</p>
-  </section>
+<section>
+  <p>Recursion means that each package may have it's own `packages.json` and `node_modules` directory, which often leads to nested directories like this:</p>
+</section>
 
-  <section>
-    <pre>
-        <code>
-              ├── grunt-cli
-              │   └── node_modules
-              │       ├── findup-sync
-              │       │   └── node_modules
-              │       │       ├── glob
-              │       │       │   └── node_modules
-              │       │       │       ├── minimatch
-              │       │       │       │   └── node_modules
-              │       │       │       │       ├── lru-cache
-              │       │       │       │       │   └── node_modules
-              │       │       │       │       │       └── weak
-              │       │       │       │       │           └── node_modules
-              │       │       │       │       │               └── mocha
-              │       │       │       │       │                   └── node_modules
-              │       │       │       │       │                       ├── coffee-script
-              │       │       │       │       │                       │   └── node_modules
-              │       │       │       │       │                       │       └── jison
-              │       │       │       │       │                       │           └── node_modules
-              │       │       │       │       │                       │               └── browserify
-              │       │       │       │       │                       │                   └── node_modules
-              │       │       │       │       │                       │                       ├── browser-resolve
-              │       │       │       │       │                       │                       │   └── example
-              </code>
-        </pre>
-  </section>
+<section>
+  <pre>
+      <code>
+            ├── grunt-cli
+            │   └── node_modules
+            │       ├── findup-sync
+            │       │   └── node_modules
+            │       │       ├── glob
+            │       │       │   └── node_modules
+            │       │       │       ├── minimatch
+            │       │       │       │   └── node_modules
+            │       │       │       │       ├── lru-cache
+            │       │       │       │       │   └── node_modules
+            │       │       │       │       │       └── weak
+            │       │       │       │       │           └── node_modules
+            │       │       │       │       │               └── mocha
+            │       │       │       │       │                   └── node_modules
+            │       │       │       │       │                       ├── coffee-script
+            │       │       │       │       │                       │   └── node_modules
+            │       │       │       │       │                       │       └── jison
+            │       │       │       │       │                       │           └── node_modules
+            │       │       │       │       │                       │               └── browserify
+            │       │       │       │       │                       │                   └── node_modules
+            │       │       │       │       │                       │                       ├── browser-resolve
+            │       │       │       │       │                       │                       │   └── example
+            </code>
+      </pre>
+</section>
 
-  <section>
-    `npm init` demo.
-  </section>
-  
-  <section>
-  <p>Much like `composer`, `npm` can install packages in a number of different ways.</p>
-  </section>
-  <section>
-    <p>`npm install <packagename>`</p>
-        <p class="fragment">This will install the package into the `node_modules` directory, but will not include it in the `package.json` file.</p>
-  </section>
-  <section>
-    <p >`npm install -g <packagename>`</p>
-        <p class="fragment">This will install the package into the user's global `node_modules` directory and give you access to that tool everywhere.</p>
-  </section>
-  <section>
-    <p>`npm install <packagename> --save`</p>
-      <p class="fragment">This will install the package into the `node_modules` directory and include it as a requirment for the project file.</p>
-      <p class="fragment">`"dependencies": { "<packagename>": "0.0.1"}`</p>
-  </section>
-  <section>
-    <p>`npm install <package> --save-dev`</p>
-      <p class="fragment">This will install the package into the `node_modules` directory and include it as a development requirment for the project file.</p>
-      <p class="fragment">`"devDependencies": {"<packagename>": "0.0.4"}`</p>
-  </section>
+<section>
+  `npm init` demo.
+</section>
+
+<section>
+<p>Much like `composer`, `npm` can install packages in a number of different ways.</p>
+</section>
+<section>
+  <p>`npm install <packagename>`</p>
+      <p class="fragment">This will install the package into the `node_modules` directory, but will not include it in the `package.json` file.</p>
+</section>
+<section>
+  <p >`npm install -g <packagename>`</p>
+      <p class="fragment">This will install the package into the user's global `node_modules` directory and give the user access to that tool everywhere.</p>
+</section>
+<section>
+  <p>`npm install <packagename> --save`</p>
+    <p class="fragment">This will install the package into the `node_modules` directory and include it as a requirment for the project file.</p>
+    <p class="fragment">`"dependencies": { "<packagename>": "0.0.1"}`</p>
+</section>
+<section>
+  <p>`npm install <package> --save-dev`</p>
+    <p class="fragment">This will install the package into the `node_modules` directory and include it as a development requirment for the project file.</p>
+    <p class="fragment">`"devDependencies": {"<packagename>": "0.0.4"}`</p>
+</section>
+
+<section>
+'npm install alternate remote demo'
+</section>
 
 ---
 
@@ -188,7 +199,6 @@ this isn't your father's js *or maybe it is*
 <section>
   <p>build it and they will come</p>
   <p class="fragment">Grunt and Gulp are javascript build tools or task runners that process the diffrent parts of your project.</p>
-  <p class="fragment">Though the build tools are javascript based, they might run applications in any language. For example, `sass` is compiled by a ruby application.</p>
   <p class="fragment">Some things you might do through a build tool: compile sass files to css, minifiy and concatenate javascript, compile coffee-script to javascript, move files from `src` to `dist`, for node applications it might also start the node server.</p>
 </section>
 
@@ -241,7 +251,7 @@ this isn't your father's js *or maybe it is*
   <ul>
     <li class="fragment">build tool</li>
     <li class="fragment">piping</li>
-    <li class="fragment">wrapper to other tools, node or otherwise (sass, compass, js minifier etc.)</li>
+    <li class="fragment">wrapper to other tools, node or otherwise (sass, js minifier, etc.)</li>
   </ul>
 </section>
 
@@ -383,7 +393,7 @@ this isn't your father's js *or maybe it is*
 </section>
 
 <section>
-  
+  demo build reveal project
 </section>
 
 ---

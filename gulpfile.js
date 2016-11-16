@@ -14,7 +14,7 @@ gulp.task('watch', function () {
   gulp.watch('*.md', ['default']);
 });
 
-gulp.task('buildnlaunch', ['watch'], function() {
+gulp.task('buildnlaunch', ['default'], function() {
   launcher('http://localhost/~clayton/nodetalk/index.html#/10', function(e, browser){
     
     if(e) return console.log(e);

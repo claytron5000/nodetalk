@@ -14,7 +14,7 @@
     "gulp-webserver": "^0.9.1"
   },
   "dependencies": {
-    "gulp-reveal": "^1.0.0",
+    "gulp-reveal": "github:claytron5000/gulp-reveal",
     "launch-browser": "^1.0.0",
     "reveal": "^0.0.4"
   }

@@ -23,7 +23,7 @@
 </section>
 
 <section>
-<h1 id="node-javascript-package-managers-and-gulp">Node, javascript package managers, and gulp</h1>
+<h1 id="node-js-package-managers-and-gulp">Node, js package managers, and gulp</h1>
   <p class="fragment"><em>Javascript has never tasted so good.</em></p>
 
 </section>
@@ -31,12 +31,14 @@
 <section>
 <h1 id="node-js-node-logo-https-nodejs-org-static-images-logos-nodejs-new-pantone-black-png-">Node.js <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png" alt="node logo"></h1>
 <section>
-this isn&#39;t your father&#39;s js <em>or maybe it is</em>
+<p>this isn&#39;t your father&#39;s js <em>or maybe it is</em></p>
 
-<em> built on Google&#39;s v8 engine
-</em> interacts with the file system
-<em> asynchronus server
-</em> <code>require()</code>
+<ul>
+  <li class="fragment">built on Google&#39;s v8 javascript engine</li>
+  <li class="fragment">interacts with the file system</li>
+  <li class="fragment">runs an asynchronus server</li>
+  <li class="fragment">utilizers the <code>require()</code> function to add modularity</li>
+</ul>
 
 </section>
 
@@ -64,10 +66,14 @@ this isn&#39;t your father&#39;s js <em>or maybe it is</em>
 
 <section>
 
-  <p>The variable <code>PI</code> is private to the circle module, but we can call the area function like so:
+<p>The variable <code>PI</code> is private to the circle module, but we can call the area function like so:
   <code>circle.area(4);</code></p>
 
 </section>
+
+<section>
+
+  demo node read file.<br></section>
 
 </section>
 
@@ -78,80 +84,84 @@ this isn&#39;t your father&#39;s js <em>or maybe it is</em>
 
 <section>
 <h1 id="npm-svg-viewbox-0-0-18-7-path-fill-cb3837-d-m0-0v6h5v1h4v-1h9v-6-path-path-fill-fff-d-m1-1v4h2v-3h1v3h1v-4h1v5h2v-4h1v2h-1v1h2v-4h1v4h2v-3h1v3h1v-3h1v3h1v-4-path-svg-">npm <svg viewBox="0 0 18 7"><path fill="#CB3837" d="M0,0v6h5v1h4v-1h9v-6"></path><path fill="#FFF" d="M1,1v4h2v-3h1v3h1v-4h1v5h2v-4h1v2h-1v1h2v-4h1v4h2v-3h1v3h1v-3h1v3h1v-4"></path></svg></h1>
-  <section>
-    <p>manage those modules!</p>
-    <p class="fragment"><code>npm</code> is both a registry of node modules and a command-line tool that brings those packages into your project. In this way it is similar to <code>composer</code>. However, there are some differences.</p>
-  </section>
+<section>
+  <p>manage those modules!</p>
+  <p class="fragment"><code>npm</code> is both a registry of node modules and a command-line tool that brings those packages into your project. In this way it is similar to <code>composer</code>. However, there are some differences.</p>
+</section>
 
-  <section>
-    <p>The differences between <code>npm</code> and <code>composer</code></p>
-      <ul>
-      <li class="fragment"><code>npm</code> creates the <code>node_modules</code> directory and the binaries are stored in a hidden <code>.bin</code> directory.</li>
-      <li class="fragment"><code>npm</code> reads and writes the <code>packages.json</code> file.</li>
-      <li class="fragment"><code>npm</code> registry is <em>not</em> namespaced, which means once a name is taken on the npm registry, it&#39;s taken forever :-(</li>
-      <li class="fragment"><code>npm</code> does not create a <code>.lock</code> file, which means the versions are more free-floating</li>
-      <li class="fragment"><code>npm</code> is recursive when building the node_module directory. </li>
-      </ul>
-  </section>
+<section>
+  <p>The differences between <code>npm</code> and <code>composer</code></p>
+    <ul>
+    <li class="fragment"><code>npm</code> creates the <code>node_modules</code> directory and the binaries are stored in a hidden <code>.bin</code> directory.</li>
+    <li class="fragment"><code>npm</code> reads and writes the <code>packages.json</code> file.</li>
+    <li class="fragment"><code>npm</code> registry is <em>not</em> namespaced, which means once a name is taken on the npm registry, it&#39;s taken forever :-(</li>
+    <li class="fragment"><code>npm</code> does not create a <code>.lock</code> file, which means the versions are free-floating</li>
+    <li class="fragment"><code>npm</code> is recursive when building the node_module directory. </li>
+    </ul>
+</section>
 
-  <section>
-    <p>Recursion means that each package may have it&#39;s own <code>packages.json</code> and <code>node_modules</code> directory, which often leads to nested directories like this:</p>
-  </section>
+<section>
+  <p>Recursion means that each package may have it&#39;s own <code>packages.json</code> and <code>node_modules</code> directory, which often leads to nested directories like this:</p>
+</section>
 
-  <section>
-    <pre>
-        <code>
-              ├── grunt-cli
-              │   └── node_modules
-              │       ├── findup-sync
-              │       │   └── node_modules
-              │       │       ├── glob
-              │       │       │   └── node_modules
-              │       │       │       ├── minimatch
-              │       │       │       │   └── node_modules
-              │       │       │       │       ├── lru-cache
-              │       │       │       │       │   └── node_modules
-              │       │       │       │       │       └── weak
-              │       │       │       │       │           └── node_modules
-              │       │       │       │       │               └── mocha
-              │       │       │       │       │                   └── node_modules
-              │       │       │       │       │                       ├── coffee-script
-              │       │       │       │       │                       │   └── node_modules
-              │       │       │       │       │                       │       └── jison
-              │       │       │       │       │                       │           └── node_modules
-              │       │       │       │       │                       │               └── browserify
-              │       │       │       │       │                       │                   └── node_modules
-              │       │       │       │       │                       │                       ├── browser-resolve
-              │       │       │       │       │                       │                       │   └── example
-              </code>
-        </pre>
-  </section>
+<section>
+  <pre>
+      <code>
+            ├── grunt-cli
+            │   └── node_modules
+            │       ├── findup-sync
+            │       │   └── node_modules
+            │       │       ├── glob
+            │       │       │   └── node_modules
+            │       │       │       ├── minimatch
+            │       │       │       │   └── node_modules
+            │       │       │       │       ├── lru-cache
+            │       │       │       │       │   └── node_modules
+            │       │       │       │       │       └── weak
+            │       │       │       │       │           └── node_modules
+            │       │       │       │       │               └── mocha
+            │       │       │       │       │                   └── node_modules
+            │       │       │       │       │                       ├── coffee-script
+            │       │       │       │       │                       │   └── node_modules
+            │       │       │       │       │                       │       └── jison
+            │       │       │       │       │                       │           └── node_modules
+            │       │       │       │       │                       │               └── browserify
+            │       │       │       │       │                       │                   └── node_modules
+            │       │       │       │       │                       │                       ├── browser-resolve
+            │       │       │       │       │                       │                       │   └── example
+            </code>
+      </pre>
+</section>
 
-  <section>
-    <code>npm init</code> demo.
-  </section>
+<section>
+  <code>npm init</code> demo.
+</section>
 
-  <section>
-  <p>Much like <code>composer</code>, <code>npm</code> can install packages in a number of different ways.</p>
-  </section>
-  <section>
-    <p><code>npm install &lt;packagename&gt;</code></p>
-        <p class="fragment">This will install the package into the <code>node_modules</code> directory, but will not include it in the <code>package.json</code> file.</p>
-  </section>
-  <section>
-    <p ><code>npm install -g &lt;packagename&gt;</code></p>
-        <p class="fragment">This will install the package into the user&#39;s global <code>node_modules</code> directory and give you access to that tool everywhere.</p>
-  </section>
-  <section>
-    <p><code>npm install &lt;packagename&gt; --save</code></p>
-      <p class="fragment">This will install the package into the <code>node_modules</code> directory and include it as a requirment for the project file.</p>
-      <p class="fragment"><code>&quot;dependencies&quot;: { &quot;&lt;packagename&gt;&quot;: &quot;0.0.1&quot;}</code></p>
-  </section>
-  <section>
-    <p><code>npm install &lt;package&gt; --save-dev</code></p>
-      <p class="fragment">This will install the package into the <code>node_modules</code> directory and include it as a development requirment for the project file.</p>
-      <p class="fragment"><code>&quot;devDependencies&quot;: {&quot;&lt;packagename&gt;&quot;: &quot;0.0.4&quot;}</code></p>
-  </section>
+<section>
+<p>Much like <code>composer</code>, <code>npm</code> can install packages in a number of different ways.</p>
+</section>
+<section>
+  <p><code>npm install &lt;packagename&gt;</code></p>
+      <p class="fragment">This will install the package into the <code>node_modules</code> directory, but will not include it in the <code>package.json</code> file.</p>
+</section>
+<section>
+  <p ><code>npm install -g &lt;packagename&gt;</code></p>
+      <p class="fragment">This will install the package into the user&#39;s global <code>node_modules</code> directory and give the user access to that tool everywhere.</p>
+</section>
+<section>
+  <p><code>npm install &lt;packagename&gt; --save</code></p>
+    <p class="fragment">This will install the package into the <code>node_modules</code> directory and include it as a requirment for the project file.</p>
+    <p class="fragment"><code>&quot;dependencies&quot;: { &quot;&lt;packagename&gt;&quot;: &quot;0.0.1&quot;}</code></p>
+</section>
+<section>
+  <p><code>npm install &lt;package&gt; --save-dev</code></p>
+    <p class="fragment">This will install the package into the <code>node_modules</code> directory and include it as a development requirment for the project file.</p>
+    <p class="fragment"><code>&quot;devDependencies&quot;: {&quot;&lt;packagename&gt;&quot;: &quot;0.0.4&quot;}</code></p>
+</section>
+
+<section>
+&#39;npm install alternate remote demo&#39;
+</section>
 
 </section>
 
@@ -403,7 +413,7 @@ this isn&#39;t your father&#39;s js <em>or maybe it is</em>
 </section>
 
 <section>
-
+  demo build reveal project
 </section>
 
 </section>
