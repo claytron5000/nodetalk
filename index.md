@@ -8,14 +8,44 @@
 ---
 
 # Node.js ![node logo](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png)
+<section>
+this isn't your father's js *or maybe it is*
   
-  this isn't your father's js *or maybe it is*
-  
-  * built on Google's v8 engine
-  * interacts with the file system
-  * asynchronus server
-  * `require()`
-  * __Demo:  node script that uses require and prints to the file system.__
+* built on Google's v8 engine
+* interacts with the file system
+* asynchronus server
+* `require()`
+
+</section>
+
+<section>
+  <p>`require()` allows us to add modules to our application. There's a simple one-to-one correspondence between 
+  files and modules</p>
+  <p class="fragment">`var circle = require('./circle.js')` brings the 'circle' module into our current application.</p>
+  <p class="fragment">We can then call methods from the circle module.</p>
+
+</section>
+
+<section>
+  <p>In order to expose methods from module 'circle' to the currect application we need to export them
+  using `exports`:</p>
+  <pre class="fragment">
+    <code>
+      const PI = Math.PI;
+
+      exports.area = (r) => PI * r * r;
+
+      exports.circumference = (r) => 2 * PI * r;
+    </code>
+  </pre>
+</section>
+
+<section>
+
+  <p>The variable `PI` is private to the circle module, but we can call the area function like so:
+  `circle.area(4);`</p>
+
+</section>
 
 ---
 

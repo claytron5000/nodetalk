@@ -30,14 +30,45 @@
 
 <section>
 <h1 id="node-js-node-logo-https-nodejs-org-static-images-logos-nodejs-new-pantone-black-png-">Node.js <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png" alt="node logo"></h1>
-<p>  this isn&#39;t your father&#39;s js <em>or maybe it is</em></p>
-<ul>
-<li>built on Google&#39;s v8 engine</li>
-<li>interacts with the file system</li>
-<li>asynchronus server</li>
-<li><code>require()</code></li>
-<li><strong>Demo:  node script that uses require and prints to the file system.</strong></li>
-</ul>
+<section>
+this isn&#39;t your father&#39;s js <em>or maybe it is</em>
+
+<em> built on Google&#39;s v8 engine
+</em> interacts with the file system
+<em> asynchronus server
+</em> <code>require()</code>
+
+</section>
+
+<section>
+  <p><code>require()</code> allows us to add modules to our application. There&#39;s a simple one-to-one correspondence between 
+  files and modules</p>
+  <p class="fragment"><code>var circle = require(&#39;./circle.js&#39;)</code> brings the &#39;circle&#39; module into our current application.</p>
+  <p class="fragment">We can then call methods from the circle module.</p>
+
+</section>
+
+<section>
+  <p>In order to expose methods from module &#39;circle&#39; to the currect application we need to export them
+  using <code>exports</code>:</p>
+  <pre class="fragment">
+    <code>
+      const PI = Math.PI;
+
+      exports.area = (r) =&gt; PI <em> r </em> r;
+
+      exports.circumference = (r) =&gt; 2 <em> PI </em> r;
+    </code>
+  </pre>
+</section>
+
+<section>
+
+  <p>The variable <code>PI</code> is private to the circle module, but we can call the area function like so:
+  <code>circle.area(4);</code></p>
+
+</section>
+
 </section>
 
 <section>

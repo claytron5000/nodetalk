@@ -13,11 +13,11 @@
 .reveal p code {
   /*background-color: transparent !important;*/
 }
-code{
+/*{
   background-color: #333333;
   color: #faf9e3;
-}
-pre code em {
+}*/
+code,pre code em {
   color: #9E8297;
 }
 pre code {
