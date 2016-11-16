@@ -1,0 +1,21 @@
+{
+  "name": "nodetalk",
+  "version": "1.0.0",
+  "description": "S demo and discussion of select number of nodejs tools.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Clayton Salem",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-markdown": "^1.2.0",
+    "gulp-webserver": "^0.9.1"
+  },
+  "dependencies": {
+    "gulp-reveal": "^1.0.0",
+    "launch-browser": "^1.0.0",
+    "reveal": "^0.0.4"
+  }
+}

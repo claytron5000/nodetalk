@@ -1,0 +1,39 @@
+.reveal section h1 img, .reveal h1 svg {
+  display: inline-block;
+  width: 100px;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+#gulp-gulp-logo-https-raw-githubusercontent-com-gulpjs-artwork-master-gulp-2x-png- img{
+  width: 60px;
+}
+
+.reveal p code {
+  /*background-color: transparent !important;*/
+}
+code{
+  background-color: #333333;
+  color: #faf9e3;
+}
+pre code em {
+  color: #9E8297;
+}
+pre code {
+  background-color: transparent;
+  color: initial;
+}
+.reveal .pretend-commandline p code {
+  font-size: 0.55em;
+}
+
+.reveal .pretend-commandline p {
+  line-height: 0.6em;
+}
+
+.reveal iframe {
+  width: 63%;
+  height: 100vh;
+  float: right;
+}
